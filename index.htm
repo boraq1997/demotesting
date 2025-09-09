@@ -1,4 +1,1332 @@
-<html>
-	<head></head>
-	<body></body>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فرقة البرمجة - جمعية كشافة الكفيل</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #0d3b66;
+            --secondary-color: #f4a261;
+            --accent-color: #e76f51;
+            --light-color: #f5f5f5;
+            --dark-color: #1a1a2e;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* تصميم راسي */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-left: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        
+        nav ul li {
+            margin: 0 10px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        
+        nav ul li a:hover, 
+        nav ul li a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .user-menu {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .user-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-left: 10px;
+            border: 2px solid var(--secondary-color);
+        }
+        
+        .user-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            width: 200px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 10px 0;
+            margin-top: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: var(--dark-color);
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .dropdown-menu a:hover {
+            background: rgba(13, 59, 102, 0.1);
+        }
+        
+        .dropdown-menu a i {
+            margin-left: 10px;
+            color: var(--primary-color);
+        }
+        
+        /* تصميم قسم سوبرمان */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(13, 59, 102, 0.8);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 0 10px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* تصميم الأقسام كلها */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 15px auto;
+        }
+        
+        /*  واجهة تسجيل الدخول */
+        .login-section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .login-form .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .login-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+        
+        .login-form input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .login-form input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+        
+        .login-form .btn {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        /*   الإنجازات */
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .achievement-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .achievement-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .achievement-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .achievement-card:hover .achievement-img img {
+            transform: scale(1.1);
+        }
+        
+        .achievement-content {
+            padding: 20px;
+        }
+        
+        .achievement-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        /*  قسم التقديم */
+        .application-form {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+        
+        .form-group {
+            flex: 1 0 300px;
+            margin: 0 15px 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+        
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+        
+        /*  صفحة التبليغات */
+        .notifications {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .notification-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+        
+        .notification-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .notification-icon {
+            background-color: rgba(13, 59, 102, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            color: var(--primary-color);
+            flex-shrink: 0;
+        }
+        
+        .notification-content {
+            flex: 1;
+        }
+        
+        .notification-content h3 {
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .notification-time {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: block;
+        }
+        
+        .notification-unread {
+            background-color: rgba(244, 162, 97, 0.1);
+        }
+        
+        /*   التعليقات */
+        .comments-section {
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        
+        .comments-list {
+            margin-bottom: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .comment {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .comment-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .comment-user-image {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-left: 10px;
+        }
+        
+        .comment-user-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .comment-user-name {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .comment-time {
+            color: #888;
+            font-size: 0.8rem;
+            margin-right: auto;
+            margin-left: 10px;
+        }
+        
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .comment-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .comment-form button {
+            align-self: flex-end;
+        }
+        
+        /*  صفحة الملف الشخصي */
+        .profile-form {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .profile-image-upload {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .profile-image-container {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 15px;
+            border: 3px solid var(--secondary-color);
+            position: relative;
+        }
+        
+        .profile-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            cursor: pointer;
+        }
+        
+        .profile-image-container:hover .profile-image-overlay {
+            opacity: 1;
+        }
+        
+        .profile-image-overlay i {
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        #profile-image-input {
+            display: none;
+        }
+        
+        /* تصميم رجلي */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 300px;
+            margin-bottom: 30px;
+            padding: 0 20px;
+        }
+        
+        .footer-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-section p {
+            margin-bottom: 10px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            color: white;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+        }
+        
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        /* تصميم مال بيسي و تلفون */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px;
+            }
+            
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .login-section, 
+            .application-form,
+            .notifications,
+            .profile-form {
+                padding: 20px;
+            }
+            
+            .user-menu span {
+                display: none;
+            }
+            
+            .form-group {
+                flex: 1 0 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- راسي -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="photo_2024-04-25_17-59-07.jpg" alt="شعار جمعية كشافة الكفيل">
+                <h1>فرقة البرمجة - كشافة الكفيل</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="nav-link active" data-page="home">الرئيسية</a></li>
+                    <li><a href="#" class="nav-link" data-page="achievements">الإنجازات</a></li>
+                    <li><a href="#" class="nav-link" data-page="application">التقديم</a></li>
+                    <li id="login-nav-item"><a href="#" class="nav-link" data-page="login">تسجيل الدخول</a></li>
+                    <li id="user-nav-item" style="display: none;" class="user-menu">
+                        <div class="user-image">
+                            <img src="https://via.placeholder.com/40" alt="صورة المستخدم" id="user-profile-img">
+                        </div>
+                        <span id="username-span">المستخدم</span>
+                        <div class="dropdown-menu" id="user-dropdown">
+                            <a href="#" data-page="profile"><i class="fas fa-user"></i> الملف الشخصي</a>
+                            <a href="#" data-page="notifications"><i class="fas fa-bell"></i> التبليغات</a>
+                            <a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- الصفحة الرئيسية -->
+    <section id="home" class="page active">
+        <div class="hero">
+            <div class="hero-content">
+                <h2>فرقة البرمجة التابعة لجمعية كشافة الكفيل</h2>
+                <p>نحو مستقبل رقمي واعد.. انضم إلى رحلة الإبداع والتطوير</p>
+                <a href="#" class="btn nav-link" data-page="application">انضم إلينا</a>
+                <a href="#" class="btn nav-link" data-page="achievements">شاهد إنجازاتنا</a>
+            </div>
+        </div>
+
+        <div class="container section">
+            <h2 class="section-title">من نحن</h2>
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <p>فرقة البرمجة التابعة لجمعية كشافة الكفيل هي مبادرة تهدف إلى تنمية مهارات الشباب في مجال البرمجة وتكنولوجيا المعلومات. نعمل على إعداد جيل مبدع قادر على مواكبة متطلبات العصر الرقمي والمساهمة في بناء المجتمع.</p>
+                <p>نقدم دورات تدريبية وورش عمل ومشاريع تطبيقية لتطوير مهارات الأعضاء في مختلف مجالات البرمجة وتطوير الويب وتصميم التطبيقات.</p>
+            </div>
+        </div>
+    </section>
+
+    <!--  الإنجازات -->
+    <section id="achievements" class="page">
+        <div class="container section">
+            <h2 class="section-title">إنجازات فرقة البرمجة</h2>
+            <div class="achievements">
+                <div class="achievement-card">
+                    <div class="achievement-img">
+                        <img src="me.jpg" alt="مشروع تطوير الويب">
+                    </div>
+                    <div class="achievement-content">
+                        <h3>مشاريع تطوير الويب</h3>
+                        <p>قمنا بتطوير أكثر من 15 موقعًا إلكترونيًا بافكار متنوعة منها مشروع تعلم لغات برمجة.</p>
+                    </div>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-img">
+                        <img src="gg.jpg" alt=" الاقمار المحمدية">
+                    </div>
+                    <div class="achievement-content">
+                        <h3>احياء ذكرى ميلاد الأقمار المحمدية عليهم السلام بمحطة البرمجة.</h3>
+                        <p>محطة البرمجة: عالم من الإبداع التقني، حيث يتعرف الزوار على أساسيات البرمجة وتطبيقاتها بأسلوب تفاعلي ممتع.</p>
+                    </div>
+                </div>
+               
+                <div class="achievement-card">
+                    <div class="achievement-img">
+                        <img src="photo_2024-12-07_13-38-25.jpg" alt="ورش العمل">
+                    </div>
+                    <div class="achievement-content">
+                        <h3>ورش العمل والدورات</h3>
+                        <p>دورة فرقة البرمجة كانت و مازالت مستمرة منذ سنتين </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--  التقديم -->
+    <section id="application" class="page">
+        <div class="container section">
+            <h2 class="section-title">التقديم لفرقة البرمجة</h2>
+            <div class="application-form">
+                <form id="application-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">الاسم الكامل</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">رقم الهاتف</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="age">العمر</label>
+                            <input type="number" id="age" min="0" max="35" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="education">المستوى التعليمي</label>
+                            <select id="education" required>
+                                <option value="">اختر المستوى التعليمي</option>
+                                <option value="secondary">ابتدائية</option>
+                                <option value="diploma">متوسطة</option>
+                                <option value="bachelor">اعدادية</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="experience">المستوى في البرمجة</label>
+                            <select id="experience" required>
+                                <option value="">اختر مستوى الخبرة</option>
+                                <option value="beginner">مبتدئ</option>
+                                <option value="intermediate">متوسط</option>
+                                <option value="advanced">متقدم</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="skills">المهارات التقنية</label>
+                        <textarea id="skills" placeholder="اذكر المهارات التقنية التي تمتلكها..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reason">لماذا تريد الانضمام إلى فرقة البرمجة؟</label>
+                        <textarea id="reason" required placeholder="اكتب هنا دوافعك للانضمام إلينا..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">تقديم الطلب</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!--  تسجيل الدخول -->
+    <section id="login" class="page">
+        <div class="container section">
+            <h2 class="section-title">تسجيل الدخول</h2>
+            <div class="login-section">
+                <form class="login-form" id="login-form">
+                    <div class="form-group">
+                        <label for="username">اسم المستخدم</label>
+                        <input type="text" id="login-username" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">كلمة المرور</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    
+                    <button type="submit" class="btn">تسجيل الدخول</button>
+                    
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a href="#" style="color: var(--primary-color); text-decoration: none;">نسيت كلمة المرور؟</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!--  التبليغات -->
+    <section id="notifications" class="page">
+        <div class="container section">
+            <h2 class="section-title">تبليغات فرقة البرمجة</h2>
+            <div class="notifications">
+                <div class="notification-item notification-unread">
+                    <div class="notification-header">
+                        <div class="notification-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <div class="notification-content">
+                            <h3>ورشة عمل جديدة</h3>
+                            <p>يسر فرقة البرمجة الإعلان عن ورشة عمل جديدة حول تطوير تطبيقات الجوال يوم السبت القادم.</p>
+                            <span class="notification-time">منذ ساعتين</span>
+                        </div>
+                    </div>
+                    
+                    <div class="comments-section">
+                        <div class="comments-list">
+                            <div class="comment">
+                                <div class="comment-header">
+                                    <div class="comment-user-image">
+                                        <img src="https://i.pinimg.com/736x/33/7d/89/337d896fca9dc86409360df4b1eb9d73.jpg" alt="صورة المستخدم">
+                                    </div>
+                                    <span class="comment-user-name">حسن </span>
+                                    <span class="comment-time">منذ ساعة</span>
+                                </div>
+                                <p>أرغب في المشاركة، هل يمكنني الحصول على مزيد من التفاصيل؟</p>
+                            </div>
+                            
+                            <div class="comment">
+                                <div class="comment-header">
+                                    <div class="comment-user-image">
+                                        <img src="https://via.placeholder.com/30" alt="صورة المستخدم">
+                                    </div>
+                                    <span class="comment-user-name">أحمداثير</span>
+                                    <span class="comment-time">منذ 45 دقيقة</span>
+                                </div>
+                                <p>كم ستكون مدة الورشة وأين ستعقد؟</p>
+                            </div>
+                        </div>
+                        
+                        <form class="comment-form" id="comment-form-1">
+                            <textarea placeholder="اكتب تعليقك هنا..."></textarea>
+                            <button type="submit" class="btn">نشر التعليق</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="notification-item">
+                    <div class="notification-header">
+                        <div class="notification-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div class="notification-content">
+                            <h3>موعد تسليم المشاريع</h3>
+                            <p>يرجى من جميع الأعضاء تسليم مشاريعهم النهائية قبل نهاية يوم الأحد القادم.</p>
+                            <span class="notification-time">منذ يومين</span>
+                        </div>
+                    </div>
+                    
+                    <div class="comments-section">
+                        <div class="comments-list">
+                            <div class="comment">
+                                <div class="comment-header">
+                                    <div class="comment-user-image">
+                                        <img src="https://via.placeholder.com/30" alt="صورة المستخدم">
+                                    </div>
+                                    <span class="comment-user-name"> فلان لان </span>
+                                    <span class="comment-time">منذ يوم</span>
+                                </div>
+                                <p>فلان</p>
+                            </div>
+                        </div>
+                        
+                        <form class="comment-form" id="comment-form-2">
+                            <textarea placeholder="اكتب تعليقك هنا..."></textarea>
+                            <button type="submit" class="btn">نشر التعليق</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="notification-item">
+                    <div class="notification-header">
+                        <div class="notification-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="notification-content">
+                            <h3>اجتماع الأعضاء</h3>
+                            <p>سيتم عقد اجتماع لأعضاء فرقة البرمجة يوم الجمعة القادم الساعة 4 عصراً.</p>
+                            <span class="notification-time">منذ 4 أيام</span>
+                        </div>
+                    </div>
+                    
+                    <div class="comments-section">
+                        <form class="comment-form" id="comment-form-3">
+                            <textarea placeholder="اكتب تعليقك هنا..."></textarea>
+                            <button type="submit" class="btn">نشر التعليق</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- صفحة الملف الشخصي -->
+    <section id="profile" class="page">
+        <div class="container section">
+            <h2 class="section-title">الملف الشخصي</h2>
+            <div class="profile-form">
+                <div class="profile-image-upload">
+                    <div class="profile-image-container">
+                        <img src="https://i.pinimg.com/736x/33/7d/89/337d896fca9dc86409360df4b1eb9d73.jpg" alt="صورة المستخدم" id="profile-image">
+                        <div class="profile-image-overlay" id="profile-image-overlay">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                    </div>
+                    <input type="file" id="profile-image-input" accept="image/*">
+                    <p>انقر على الصورة لتغييرها</p>
+                </div>
+                
+                <form id="profile-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="profile-name">الاسم الكامل</label>
+                            <input type="text" id="profile-name-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="profile-email">البريد الإلكتروني</label>
+                            <input type="email" id="profile-email-input" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="profile-phone">رقم الهاتف</label>
+                            <input type="tel" id="profile-phone-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="profile-join-date">تاريخ الانضمام</label>
+                            <input type="text" id="profile-join-date-input" disabled>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="profile-skills">المهارات</label>
+                        <textarea id="profile-skills-input" placeholder="اكتب مهاراتك هنا..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="profile-bio">نبذة عني</label>
+                        <textarea id="profile-bio-input" placeholder="اكتب نبذة عن نفسك..."></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <button type="submit" class="btn">حفظ التغييرات</button>
+                        <button type="button" class="btn btn-secondary" id="cancel-changes">إلغاء</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- رجلي -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>عن الفرقة</h3>
+                <p>فرقة البرمجة التابعة لجمعية كشافة الكفيل، نعمل على تمكين الشباب في مجال البرمجة وتكنولوجيا المعلومات.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>معلومات التواصل</h3>
+                <p><i class="fas fa-map-marker-alt"></i> خلف مقر الاستخبارات، كربلاء، العراق</p>
+                <p><i class="fas fa-phone"></i> 07836070448</p>
+                <p><i class="fas fa-envelope"></i>kshaf.programm@gmail.com</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>تابعنا على</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 فرقة البرمجة - جمعية كشافة الكفيل. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script>
+        // بيانات المستخدمين
+        const users = [
+            {
+                username: "user1",
+                password: "password1",
+                name: "محمد بشير",
+                email: "m2mo202100@gmail.com",
+                phone: "07836070448",
+                skills: "HTML, CSS, JavaScript, Python",
+                joinDate: "2023",
+                bio: "مطور ويب شغوف بتعلم التقنيات الحديثة",
+                image: "https://i.pinimg.com/736x/33/7d/89/337d896fca9dc86409360df4b1eb9d73.jpg"
+            },
+            {
+                username: "admin",
+                password: "admin123",
+                name: "مدير النظام",
+                email: "admin@example.com",
+                phone: "07701234567",
+                skills: "إدارة، تطوير ويب، قيادة فرق",
+                joinDate: "2022",
+                bio: "مدير فرقة البرمجة في جمعية كشافة الكفيل",
+                image: "https://via.placeholder.com/100?text=Admin"
+            }
+        ];
+
+        // العناصر الرئيسية في DOM
+        const loginNavItem = document.getElementById('login-nav-item');
+        const userNavItem = document.getElementById('user-nav-item');
+        const usernameSpan = document.getElementById('username-span');
+        const userProfileImg = document.getElementById('user-profile-img');
+        const userDropdown = document.getElementById('user-dropdown');
+        const logoutBtn = document.getElementById('logout-btn');
+        const loginForm = document.getElementById('login-form');
+        const profileForm = document.getElementById('profile-form');
+        const profileImage = document.getElementById('profile-image');
+        const profileImageInput = document.getElementById('profile-image-input');
+        const profileImageOverlay = document.getElementById('profile-image-overlay');
+        const profileNameInput = document.getElementById('profile-name-input');
+        const profileEmailInput = document.getElementById('profile-email-input');
+        const profilePhoneInput = document.getElementById('profile-phone-input');
+        const profileJoinDateInput = document.getElementById('profile-join-date-input');
+        const profileSkillsInput = document.getElementById('profile-skills-input');
+        const profileBioInput = document.getElementById('profile-bio-input');
+        const cancelChangesBtn = document.getElementById('cancel-changes');
+
+        // التعليقات
+        const commentForms = document.querySelectorAll('.comment-form');
+
+        // التحقق من حالة تسجيل الدخول عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+            if (loggedInUser) {
+                updateUIForLoggedInUser(loggedInUser);
+            }
+        });
+
+        // إظهار/إخفاء القائمة المنسدلة
+        userNavItem.addEventListener('click', function(e) {
+            e.stopPropagation();
+            userDropdown.classList.toggle('show');
+        });
+
+        // إغلاق القائمة المنسدلة عند النقر خارجها
+        document.addEventListener('click', function() {
+            userDropdown.classList.remove('show');
+        });
+
+        // منع إغلاق القائمة عند النقر عليها
+        userDropdown.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        // تسجيل الدخول
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+            
+            const user = users.find(u => u.username === username && u.password === password);
+            
+            if (user) {
+                // حفظ بيانات المستخدم في localStorage
+                localStorage.setItem('loggedInUser', JSON.stringify(user));
+                updateUIForLoggedInUser(user);
+                
+                // الانتقال إلى صفحة التبليغات
+                showPage('notifications');
+                
+                // إغلاق القائمة المنسدلة
+                userDropdown.classList.remove('show');
+            } else {
+                alert('اسم المستخدم أو كلمة المرور غير صحيحة');
+            }
+        });
+
+        // تسجيل الخروج
+        logoutBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            localStorage.removeItem('loggedInUser');
+            loginNavItem.style.display = 'list-item';
+            userNavItem.style.display = 'none';
+            showPage('home');
+        });
+
+        // تحديث واجهة المستخدم بعد تسجيل الدخول
+        function updateUIForLoggedInUser(user) {
+            loginNavItem.style.display = 'none';
+            userNavItem.style.display = 'list-item';
+            usernameSpan.textContent = user.name;
+            userProfileImg.src = user.image;
+            
+            // تحديث بيانات الملف الشخصي
+            profileImage.src = user.image;
+            profileNameInput.value = user.name;
+            profileEmailInput.value = user.email;
+            profilePhoneInput.value = user.phone;
+            profileJoinDateInput.value = user.joinDate;
+            profileSkillsInput.value = user.skills;
+            profileBioInput.value = user.bio || '';
+        }
+
+        // تغيير صورة الملف الشخصي
+        profileImageOverlay.addEventListener('click', function() {
+            profileImageInput.click();
+        });
+
+        profileImageInput.addEventListener('change', function(e) {
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    profileImage.src = e.target.result;
+                    
+                    // تحديث الصورة في القائمة أيضًا
+                    userProfileImg.src = e.target.result;
+                    
+                    // تحديث بيانات المستخدم في localStorage
+                    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+                    if (loggedInUser) {
+                        loggedInUser.image = e.target.result;
+                        localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+                    }
+                }
+                
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
+
+        // حفظ التغييرات في الملف الشخصي
+        profileForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+            if (loggedInUser) {
+                // تحديث بيانات المستخدم
+                loggedInUser.name = profileNameInput.value;
+                loggedInUser.email = profileEmailInput.value;
+                loggedInUser.phone = profilePhoneInput.value;
+                loggedInUser.skills = profileSkillsInput.value;
+                loggedInUser.bio = profileBioInput.value;
+                
+                // حفظ البيانات المحدثة
+                localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+                
+                // تحديث واجهة المستخدم
+                updateUIForLoggedInUser(loggedInUser);
+                
+                alert('تم حفظ التغييرات بنجاح!');
+            }
+        });
+
+        // إلغاء التغييرات في الملف الشخصي
+        cancelChangesBtn.addEventListener('click', function() {
+            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+            if (loggedInUser) {
+                updateUIForLoggedInUser(loggedInUser);
+            }
+        });
+
+        // إضافة تعليقات جديدة
+        commentForms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const textarea = this.querySelector('textarea');
+                const commentText = textarea.value.trim();
+                
+                if (commentText) {
+                    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+                    
+                    if (loggedInUser) {
+                        const commentsList = this.previousElementSibling;
+                        const now = new Date();
+                        const timeString = 'الآن';
+                        
+                        const commentEl = document.createElement('div');
+                        commentEl.className = 'comment';
+                        commentEl.innerHTML = `
+                            <div class="comment-header">
+                                <div class="comment-user-image">
+                                    <img src="${loggedInUser.image}" alt="صورة المستخدم">
+                                </div>
+                                <span class="comment-user-name">${loggedInUser.name}</span>
+                                <span class="comment-time">${timeString}</span>
+                            </div>
+                            <p>${commentText}</p>
+                        `;
+                        
+                        commentsList.appendChild(commentEl);
+                        textarea.value = '';
+                        
+                        // Scroll to the new comment
+                        commentEl.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                        alert('يجب تسجيل الدخول لإضافة تعليق');
+                    }
+                }
+            });
+        });
+
+        // التنقل بين الصفحات
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // إزالة النشاط من جميع الروابط
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                
+                // إضافة النشاط للرابط المختار
+                this.classList.add('active');
+                
+                // إظهار الصفحة المختارة
+                const pageId = this.getAttribute('data-page');
+                showPage(pageId);
+            });
+        });
+
+        // الروابط في القائمة المنسدلة
+        document.querySelectorAll('#user-dropdown a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const pageId = this.getAttribute('data-page');
+                showPage(pageId);
+                
+                // إزالة النشاط من جميع الروابط وإضافته للرابط المناسب
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                
+                // إغلاق القائمة المنسدلة
+                userDropdown.classList.remove('show');
+            });
+        });
+
+        // وظيفة إظهار الصفحة
+        function showPage(pageId) {
+            // إخفاء جميع الصفحات
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            
+            // إظهار الصفحة المختارة
+            document.getElementById(pageId).classList.add('active');
+            
+            // التمرير لأعلى الصفحة
+            window.scrollTo(0, 0);
+        }
+
+        // معالجة تقديم نموذج التقديم
+        document.getElementById('application-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('تم تقديم طلبك بنجاح! سنقوم بالاتصال بك قريباً.');
+            this.reset();
+        });
+    </script>
+</body>
 </html>
